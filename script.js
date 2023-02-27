@@ -1,62 +1,103 @@
-/*<nav class="navbar">
-<div> 
-    <label for="search-btn"> search </label>
-<input type="text" id="search-btn">
+/*<header>
+<nav class="navbar">
+    <div> 
+        <label for="search-btn"> search </label>
+    <input type="text" id="search-btn">
 </div>
-<div class="btn-shift">
-   <button id="menu-btn" >Menu</button>
-   <button id="myteam-btn"> My team </button>
+
+   <div class="btn-shift">
+       <button id="menu-btn" >Menu</button>
+       <button id="myteam-btn"> My team </button>
+   </div>
+</nav>
+</header>
+<main>
+<div id="vy-menu"></div>
+<div id="vy-myteam"> hi</div>
+<div>
+<p id="para"></p> 
 </div>
-</nav>*/
-
-const searchInput = document.querySelector('#search-btn');
-const menuButton = document.querySelector('#menu.btn');
-const myTeamButton = document.querySelector('#myteam-btn');
-const body = document.querySelector('body');
-const para = document.querySelector('#para');
-const vyMyteam = document.querySelector('#vy-myteam')
-const vyMenu = document.querySelector('#vy-menu')
-const imagePlayer = document.querySelector('.image')
-
-
-const imageUrl = 'https://pokeapi.co/api/v2/pokemon/bulbasaur'
+<div class="image"></div>
+</main>*/
 
 
 
-searchInput.addEventListener('keydown' , async (event) =>{
-    const url = 'https://pokeapi.co/api/v2/pokemon?limit=10&offset=0' 
-    //const urlImage = 'https://pokeapi.co/api/v2/pokemon/bulbasaur'
+const input ={
+    search: document.querySelector('#search-btn'),
+   
+   
+}
+
+
+const output = {
+    body: document.querySelector('body'),
+    para: document.querySelector('#para'),
+    viewMyteam: document.querySelector('#view-myteam'),
+    viewMenu : document.querySelector('#view-menu'),
+    imagePlayer : document.querySelector('.image')
+}
+
+const button = {
+    menu : document.querySelector('#menu.btn'),
+    myTeam : document.querySelector('#myteam-btn'),
+}
+
+
+
+//event för search box för att söka namn av pokemon
+
+input.search.addEventListener('keydown' , async (event) =>{
+    
+    const url = 'https://pokeapi.co/api/v2/pokemon?limit=20&offset=0' 
     if (event.key === 'Enter'){ 
 
     const response = await fetch(url)
-    const data = await response.json()
+    const allPokemons = await response.json()
+  
+   
 
-    let nameOfPokemon = data.results[0].name
+    //för söka namn av pokemon i sökfälten
+   let input = document.querySelector('.search-input').value
+   console.log(input);
+   let matchPokemonIndex = allPokemons.results.findIndex(pokemon =>pokemon.name==input)
+   console.log(matchPokemonIndex);
+
+
+    // när det inte finns pokemons namn i sökfälten 
+   if(matchPokemonIndex > -1){
+
+    // pokemons kort att bild och namn ska vara i ett kort
+   let card = document.createElement('div')
+   card.classList.add('card')
+    let nameOfPokemon = allPokemons.results[matchPokemonIndex].name;
+
     console.log(nameOfPokemon );
-    para.innerText = 'name: ' + nameOfPokemon
-    vyMenu.append(para)
+    output.para.innerText = `name: ${nameOfPokemon}`
+    card.append(output.para)
+    output.viewMenu.innerHTML = "" ;
+    output.viewMenu.append(card)
 
-
-    const responseImg = await fetch(imageUrl)
-    const dataImage = await responseImg.json()
-    let imagePokemon = dataImage.sprites.front_default
-    console.log(imagePokemon);
     
+  
 
-    vyMenu.append(imagePokemon)
+   //för hämta bild av pokemon
+    const imageOfPokemon = document.createElement('img')
+    imageOfPokemon.classList.add('picture')
+   imageOfPokemon.src = `https:raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${matchPokemonIndex}.png`
+   card.append(imageOfPokemon)
+   //output.vyMenu.append(card)
+   //body.append(output.vyMenu)
+   } else{
+    console.log('det finns inget pokemn');
+    output.para.innerText = `det finns inget pokemn:`
+    output.viewMenu.append(para)
+
+   }
+
+    
    
-   
-    
 
-    //
-   /* 
-    
-    let imagePokemon = dataImage.sprites.front_deafult
-    console.log(imagePokemon);
-   // const imageOfPokemon = document.createElement('img')
-   // imageOfPokemon.src = 'https://pokeapi.co/api/v2/pokemon/1/';*/
-
-    vyMenu.append(imagePokemon)
+  
   
 
 
@@ -65,20 +106,16 @@ searchInput.addEventListener('keydown' , async (event) =>{
 
 })
 
-/*imagePlayer.addEventListener('click' , () =>{
-    const responseImg = await fetch(imageUrl)
-    const dataImage = responseImg.json()
-    let imagePokemon = dataImage.sprites.front_default
-    console.log(imagePokemon);
+// att hämta my team sidan
 
-    vyMenu.append(imagePokemon)
-})*/
+/*$('#view-myteam').click(function () {
+    output.viewMyteam.style.visibility = 'visible';
+});*/
 
-//vy-myteam
-myTeamButton.addEventListener('click' , () =>{
-   vyMyteam.style.visibility = 'visible'
+button.myTeam.addEventListener('click' , () =>{
   
-   console.log('click');
+  output.viewMyteam.style.visibility = 'visible'
 })
-
+        
+  
 
