@@ -6,14 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="card.css">
     <script src="script.js" type="module"></script>
+    <!--<script src="method.js" type="module"></script>-->
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div> 
                 <label for="search-btn"> search </label>
-            <input type="text" id="search-btn" class="search-input">
+            <input type="text" id="search-box" class="search-input">
         </div>
        
            <div class="btn-shift">
@@ -23,11 +25,15 @@
         </nav>
     </header>
     <main>
+    <div>    
     <div id="view-menu"></div>
     <div id="view-myteam"></div>
+    </div>
     <div>
         <p id="para" class="carlo"></p> 
     </div>
+    
+    
     <div class="image"></div>
     </main>
 </body>
