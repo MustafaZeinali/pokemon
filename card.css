@@ -1,17 +1,20 @@
 
 .card{
     display: flex;
-    position: absolute;
+    position: relative;
     flex-direction: column;
      border: 2px solid rgb(26, 26, 167);
      width: 9rem;
      background-color: rgb(85, 110, 223);
      height: 10rem;
-     gap: ;
+     left: 1rem;
 }
 
 .picture{
-     position: absolute;
+     position: relative;
+     bottom: 90px;
+
+   
 
     
 }
@@ -32,7 +35,24 @@
     width: 4.5rem;
     background-color: tomato;
     position: absolute;
-    top: 120px;
-    left: 20px;
+    top: 125px;
+    left: 34px;
     color: #fff;
+}
+
+.pico{
+    width: 15%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    mix-blend-mode: color-burn;
+    object-position: initial;
+    
+ 
+}
+
+.Pico-div{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: -15px;
 }
