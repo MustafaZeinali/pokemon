@@ -35,14 +35,12 @@ const button = {
 }
 
 menuBtn.addEventListener("click", () => {
-    // viewMenu.style.display = 'block' 
-    // viewMyteam.style.display = 'none'
+    
     document.querySelector('#view-menu').style.display = 'block'
     document.querySelector('#view-myteam').style.display = 'none'
 })
 
 myTeam.addEventListener("click" , () =>{
-    console.log('myTeam click', output.viewMenu, output)
     document.querySelector('#view-menu').style.display = 'none'
     document.querySelector('#view-myteam').style.display = 'block'
     // output.viewMenu.style.display = 'none' 
@@ -50,7 +48,6 @@ myTeam.addEventListener("click" , () =>{
 })
 
 //event för search box för att söka namn av pokemon
-// for searching 
 
 input.search.addEventListener('keydown' , async (event) =>{
     const url = 'https://pokeapi.co/api/v2/pokemon?limit=20&offset=0' 
@@ -97,10 +94,12 @@ function addToTeam(pokemon) {
     renderTeam()
 }
 function renderTeam() {
-    let switch = document.querySelector('.add-btn');
-    switch.addEventListener('click' , () => {
-        card.push()
+    let switchButton = document.getElementsByClassName('add-btn')
+    switchButton.addEventListener('click' , () =>{
+        console.log('push');
+        teamList.push(card)
     })
+    
     // skapar ett pokemon card för varje pokemon i: teamList
     // lägger till i DOM
 }
@@ -109,7 +108,7 @@ function createPokemonCard(pokemon) {
     // pokemons kort att bild och namn ska vara i ett kort
     let card = document.createElement('section')
     let addButton = document.createElement('button')
-    let titleElement = document.createElement('h2')
+    let titleElement = document.createElement('h4')
     addButton.innerText = 'Add me' ;
     addButton.classList.add('add-btn')
     addButton.addEventListener('click', () => addToTeam(pokemon))
@@ -120,7 +119,7 @@ function createPokemonCard(pokemon) {
     
     //console.log('createPokemonCard: pokemon object is ', pokemon, nameOfPokemon );
     // output.para.innerText = `name: ${nameOfPokemon}`
-    titleElement.innerText = nameOfPokemon
+    titleElement.innerText = `name :  ${nameOfPokemon}`
     card.appendChild(titleElement)
 
     const imageOfPokemon = document.createElement('img')

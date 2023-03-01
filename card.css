@@ -13,6 +13,10 @@
 .picture{
      position: relative;
      bottom: 90px;
+     border-radius: 8rem;
+     background-color: #fff;
+     height:3rem;
+     width: 2px;
 
    
 
@@ -55,4 +59,10 @@
     justify-content: center;
     position: relative;
     top: -15px;
+}
+h4{
+    color: aliceblue;
+    position: relative;
+    top: 80px;
+    left: 5px;
 }
