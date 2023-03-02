@@ -6,17 +6,20 @@
      border: 2px solid rgb(26, 26, 167);
      width: 9rem;
      background-color: rgb(85, 110, 223);
-     height: 10rem;
+     height: 11rem;
      left: 1rem;
+     margin: 2rem;
 }
 
 .picture{
      position: relative;
-     bottom: 90px;
-     border-radius: 8rem;
+     bottom: 50px;
+     left: 1rem;
+     border: 2px solid;
+     border-radius: ;
      background-color: #fff;
-     height:3rem;
-     width: 2px;
+     height:5rem;
+     width: 7rem;
 
    
 
@@ -33,13 +36,13 @@
  
 
 
-.add-btn{
+.add-btn , .delete-btn {
     border: none;
     padding: 0.4rem;
     width: 4.5rem;
     background-color: tomato;
     position: absolute;
-    top: 125px;
+    top: 140px;
     left: 34px;
     color: #fff;
 }
@@ -60,9 +63,9 @@
     position: relative;
     top: -15px;
 }
-h4{
+h4 , .name-input {
     color: aliceblue;
     position: relative;
-    top: 80px;
+    top: 90px;
     left: 5px;
 }

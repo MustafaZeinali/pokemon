@@ -43,8 +43,7 @@ menuBtn.addEventListener("click", () => {
 myTeam.addEventListener("click" , () =>{
     document.querySelector('#view-menu').style.display = 'none'
     document.querySelector('#view-myteam').style.display = 'block'
-    // output.viewMenu.style.display = 'none' 
-    // output.viewMyteam.style.display = 'block'
+ 
 })
 
 //event för search box för att söka namn av pokemon
@@ -87,40 +86,90 @@ input.search.addEventListener('keydown' , async (event) =>{
         
     }
 })
+/*När man lägger till en Pokémon, ska man kunna välja ett namn åt den. Observera att
+ man kan lägga till flera Pokémon av samma sort.*/
+let changeName = document.createElement('button')
+
+
 function addToTeam(pokemon) {
-    teamList.push(pokemon)
-    // TODO: ifall laget är fullt, lägg till reserv i stället
+    
+   
+    
+    
+    if(teamList.length < 3 ){
+        teamList.push(pokemon)
+        
+    } else {
+        reserveList.push(pokemon)
+    }
 
     renderTeam()
 }
 function renderTeam() {
-    let switchButton = document.getElementsByClassName('add-btn')
-    switchButton.addEventListener('click' , () =>{
-        console.log('push');
-        teamList.push(card)
-    })
     
-    // skapar ett pokemon card för varje pokemon i: teamList
-    // lägger till i DOM
+    console.log(teamList , reserveList);
+    let myTeamContainerEl = document.querySelector('.my-team-container');
+    myTeamContainerEl.innerHTML = "";
+
+    teamList.forEach(pokemon => {
+        let pokemonCard = createPokemonCard(pokemon, true);
+        myTeamContainerEl.appendChild(pokemonCard);
+        
+    });
+   reserveList.forEach(pokemon =>{
+        let pokemonCard = createPokemonCard(pokemon ,true);
+        document.querySelector('.reserve-container').appendChild(pokemonCard)
+    })
+
 }
 
-function createPokemonCard(pokemon) {
+function createPokemonCard(pokemon, isOnTeam) {
     // pokemons kort att bild och namn ska vara i ett kort
     let card = document.createElement('section')
     let addButton = document.createElement('button')
     let titleElement = document.createElement('h4')
-    addButton.innerText = 'Add me' ;
-    addButton.classList.add('add-btn')
-    addButton.addEventListener('click', () => addToTeam(pokemon))
+    let changeNameButton = document.createElement('button')
+    changeNameButton.innerText = 'change name' ;
+    card.append(changeNameButton);
     
-    card.appendChild(addButton)
+   
+
+    if (isOnTeam) {
+        // ska pokemonkortet ha en ta bort knapp
+        let deleteButton = document.createElement('button')
+        deleteButton.className = 'delete-btn' ;
+        
+        deleteButton.addEventListener('click' , () => {
+        card.remove()
+    })
+        deleteButton.innerText = 'Kick out!'
+        card.appendChild(deleteButton)
+
+    } else {
+        addButton.innerText = 'Add me' ;
+        addButton.classList.add('add-btn')
+        addButton.addEventListener('click', () => addToTeam(pokemon))
+        
+        card.appendChild(addButton)
+    }
+     
     card.classList.add('card')
     let nameOfPokemon = pokemon.name;
-    
+    // byt namn på pokemon 
+    let nameInput = document.createElement('input')
+    nameInput.value = nameOfPokemon ;
+    nameInput.className ='name-input' ;
+    nameInput.innerText = nameOfPokemon ;
+    card.appendChild(nameInput)
     //console.log('createPokemonCard: pokemon object is ', pokemon, nameOfPokemon );
     // output.para.innerText = `name: ${nameOfPokemon}`
     titleElement.innerText = `name :  ${nameOfPokemon}`
     card.appendChild(titleElement)
+
+    changeNameButton.addEventListener('click' , () =>{
+        titleElement.remove()
+        //nameInput.style.display = 'block'
+    })
 
     const imageOfPokemon = document.createElement('img')
     imageOfPokemon.classList.add('picture')
@@ -131,6 +180,11 @@ function createPokemonCard(pokemon) {
 
     return card // DOM-element
 }
+
+//ta bort pokemonskort
+
+
+
 async function fetchPokemonDetails(pokemon) {
     //console.log('fetchPokemonDetails', pokemon)
     const response = await fetch(pokemon.url)
