@@ -13,14 +13,14 @@
 
 .picture{
      position: relative;
-     bottom: 50px;
+     bottom: 10px;
      left: 1rem;
      border: 2px solid;
      border-radius: ;
      background-color: #fff;
      height:5rem;
      width: 7rem;
-
+  
    
 
     
@@ -28,15 +28,15 @@
 
 #para{
     
-    position: absolute;
-    top: 80px;
+    position: relative;
+    top: 110px;
     left: 10px;
      
 }
  
 
 
-.add-btn , .delete-btn {
+.add-btn , .delete-btn , .change-btn {
     border: none;
     padding: 0.4rem;
     width: 4.5rem;
@@ -68,4 +68,13 @@ h4 , .name-input {
     position: relative;
     top: 90px;
     left: 5px;
+    margin:0;
+}
+
+.input-change-name{
+    z-index: -10;
+}
+
+#input-change-name {
+    
 }

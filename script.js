@@ -8,7 +8,7 @@ let reserveList = []
 // DOM variabler
 const input ={
     search: document.querySelector('#search-box'),
-    
+    inputChangeName : document.querySelector('.input-change-name')
     
 }
 
@@ -38,12 +38,17 @@ menuBtn.addEventListener("click", () => {
     
     document.querySelector('#view-menu').style.display = 'block'
     document.querySelector('#view-myteam').style.display = 'none'
+    document.querySelector('#input-change-name').style.display = 'none';
+    input.inputChangeName.style.display = 'none'
 })
+
+
 
 myTeam.addEventListener("click" , () =>{
     document.querySelector('#view-menu').style.display = 'none'
     document.querySelector('#view-myteam').style.display = 'block'
- 
+    document.querySelector('#input-change-name').style.display = 'block'
+    input.inputChangeName.style.display = 'block'
 })
 
 //event för search box för att söka namn av pokemon
@@ -128,9 +133,7 @@ function createPokemonCard(pokemon, isOnTeam) {
     let card = document.createElement('section')
     let addButton = document.createElement('button')
     let titleElement = document.createElement('h4')
-    let changeNameButton = document.createElement('button')
-    changeNameButton.innerText = 'change name' ;
-    card.append(changeNameButton);
+   
     
    
 
@@ -145,6 +148,30 @@ function createPokemonCard(pokemon, isOnTeam) {
         deleteButton.innerText = 'Kick out!'
         card.appendChild(deleteButton)
 
+        /*let changeNameButton = document.createElement('button')
+        changeNameButton.classList.add('change-btn')
+        changeNameButton.innerText = 'change name' ;
+        card.append(changeNameButton);
+        changeNameButton.addEventListener('click' , () =>{
+            titleElement.remove()
+            //nameInput.style.display = 'block'
+        })*/
+        //let nameInput = document.createElement('input').value ;
+        let Paragraph = document.createElement('p')
+         
+        //nameInput.classList.add('name-input') ;
+
+        input.inputChangeName.addEventListener('keydown' , (event) => {
+
+            if(event.key === 'Enter'){
+                Paragraph.innerText = input.inputChangeName ;
+            }
+            
+           // Paragraph.innerText = input.inputChangeName;
+        })
+        //nameInput.innerText = nameOfPokemon ;
+        card.append(input.inputChangeName)
+        card.appendChild(Paragraph)
     } else {
         addButton.innerText = 'Add me' ;
         addButton.classList.add('add-btn')
@@ -156,20 +183,13 @@ function createPokemonCard(pokemon, isOnTeam) {
     card.classList.add('card')
     let nameOfPokemon = pokemon.name;
     // byt namn på pokemon 
-    let nameInput = document.createElement('input')
-    nameInput.value = nameOfPokemon ;
-    nameInput.className ='name-input' ;
-    nameInput.innerText = nameOfPokemon ;
-    card.appendChild(nameInput)
+   
     //console.log('createPokemonCard: pokemon object is ', pokemon, nameOfPokemon );
     // output.para.innerText = `name: ${nameOfPokemon}`
     titleElement.innerText = `name :  ${nameOfPokemon}`
     card.appendChild(titleElement)
 
-    changeNameButton.addEventListener('click' , () =>{
-        titleElement.remove()
-        //nameInput.style.display = 'block'
-    })
+    
 
     const imageOfPokemon = document.createElement('img')
     imageOfPokemon.classList.add('picture')
