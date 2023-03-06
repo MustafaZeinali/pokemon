@@ -8,7 +8,7 @@ let reserveList = []
 // DOM variabler
 const input ={
     search: document.querySelector('#search-box'),
-    inputChangeName : document.querySelector('.input-change-name')
+    
     
 }
 
@@ -23,8 +23,8 @@ const output = {
 let viewMyteam = document.querySelector('#view-myteam')
 let viewMenu = document.querySelector('#view-menu')
 
-viewMenu.style.display = 'block' ;
-viewMyteam.style.display = 'none'
+document.querySelector('.input-change-name-container').style.display = 'none'
+
 
 
 let menuBtn = document.querySelector('#menu-btn')
@@ -38,8 +38,8 @@ menuBtn.addEventListener("click", () => {
     
     document.querySelector('#view-menu').style.display = 'block'
     document.querySelector('#view-myteam').style.display = 'none'
-    document.querySelector('#input-change-name').style.display = 'none';
-    input.inputChangeName.style.display = 'none'
+   let inputChangeName = document.querySelector('.input-change-name-container').style.display = 'none'
+
 })
 
 
@@ -47,8 +47,7 @@ menuBtn.addEventListener("click", () => {
 myTeam.addEventListener("click" , () =>{
     document.querySelector('#view-menu').style.display = 'none'
     document.querySelector('#view-myteam').style.display = 'block'
-    document.querySelector('#input-change-name').style.display = 'block'
-    input.inputChangeName.style.display = 'block'
+    document.querySelector('.input-change-name-container').style.display = 'block'
 })
 
 //event för search box för att söka namn av pokemon
@@ -106,6 +105,7 @@ function addToTeam(pokemon) {
         
     } else {
         reserveList.push(pokemon)
+        
     }
 
     renderTeam()
@@ -124,6 +124,7 @@ function renderTeam() {
    reserveList.forEach(pokemon =>{
         let pokemonCard = createPokemonCard(pokemon ,true);
         document.querySelector('.reserve-container').appendChild(pokemonCard)
+    
     })
 
 }
@@ -140,6 +141,9 @@ function createPokemonCard(pokemon, isOnTeam) {
     if (isOnTeam) {
         // ska pokemonkortet ha en ta bort knapp
         let deleteButton = document.createElement('button')
+        let dropDown = document.createElement ('select')
+        dropDown.innerText = 'test';
+
         deleteButton.className = 'delete-btn' ;
         
         deleteButton.addEventListener('click' , () => {
@@ -155,13 +159,13 @@ function createPokemonCard(pokemon, isOnTeam) {
         changeNameButton.addEventListener('click' , () =>{
             titleElement.remove()
             //nameInput.style.display = 'block'
-        })*/
+        })
         //let nameInput = document.createElement('input').value ;
-        let Paragraph = document.createElement('p')
          
         //nameInput.classList.add('name-input') ;
 
-        input.inputChangeName.addEventListener('keydown' , (event) => {
+       /* input.inputChangeName.addEventListener('keydown' , (event) => {
+        
 
             if(event.key === 'Enter'){
                 Paragraph.innerText = input.inputChangeName ;
@@ -171,7 +175,8 @@ function createPokemonCard(pokemon, isOnTeam) {
         })
         //nameInput.innerText = nameOfPokemon ;
         card.append(input.inputChangeName)
-        card.appendChild(Paragraph)
+        card.appendChild(Paragraph)*/
+      
     } else {
         addButton.innerText = 'Add me' ;
         addButton.classList.add('add-btn')
@@ -179,14 +184,14 @@ function createPokemonCard(pokemon, isOnTeam) {
         
         card.appendChild(addButton)
     }
-     
+
     card.classList.add('card')
     let nameOfPokemon = pokemon.name;
     // byt namn på pokemon 
    
     //console.log('createPokemonCard: pokemon object is ', pokemon, nameOfPokemon );
     // output.para.innerText = `name: ${nameOfPokemon}`
-    titleElement.innerText = `name :  ${nameOfPokemon}`
+    titleElement.innerText = `name :  ${nameOfPokemon}` ;
     card.appendChild(titleElement)
 
     
@@ -201,7 +206,7 @@ function createPokemonCard(pokemon, isOnTeam) {
     return card // DOM-element
 }
 
-//ta bort pokemonskort
+
 
 
 
@@ -213,7 +218,7 @@ async function fetchPokemonDetails(pokemon) {
 
     const sprites = pokemonBasicInfo.sprites.front_default
     //console.log('TEST' ,sprites);
-    // card.innerHTML = sprites 
+
 
     pokemon.sprite = sprites
 
@@ -225,20 +230,3 @@ async function fetchPokemonDetails(pokemon) {
 }
 
 
-// att hämta my team sidan
-
-/*$('#view-myteam').click(function () {
-    output.viewMyteam.style.visibility = 'visible';
-});*/
-//let isVisible = true ;
-
-/*button.menu.addEventListener('click' , () => {
-    console.log('click');
-    output.viewMyteam.style.visibility = 'invisible'
-    console.log('click');
-}) */    
-// in background
-/*chrome.tabs.sendMessage(65, 'good soup', () => console.error(chrome.runtime.lastError))
-
-// in tab
-chrome.runtime.onMessage.addListener(() => true)*/

@@ -1,8 +1,8 @@
 
 .card{
-    display: flex;
+   
     position: relative;
-    flex-direction: column;
+   
      border: 2px solid rgb(26, 26, 167);
      width: 9rem;
      background-color: rgb(85, 110, 223);
@@ -13,7 +13,7 @@
 
 .picture{
      position: relative;
-     bottom: 10px;
+     bottom: 35px;
      left: 1rem;
      border: 2px solid;
      border-radius: ;
@@ -29,22 +29,35 @@
 #para{
     
     position: relative;
-    top: 110px;
+    top: 70px;
     left: 10px;
      
 }
  
 
 
-.add-btn , .delete-btn , .change-btn {
+.add-btn , .delete-btn {
     border: none;
     padding: 0.4rem;
     width: 4.5rem;
     background-color: tomato;
-    position: absolute;
+    position: relative;
     top: 140px;
     left: 34px;
     color: #fff;
+    
+}
+.change-btn{
+    border: none;
+    padding: 0.4rem 1.9rem 0.4rem 1.9rem;
+    background-color: tomato;
+    position: relative;
+    top: 149px;
+    left: px;
+   
+    color: #fff;
+   
+    
 }
 
 .pico{
@@ -66,14 +79,12 @@
 h4 , .name-input {
     color: aliceblue;
     position: relative;
-    top: 90px;
+    top: 80px;
     left: 5px;
     margin:0;
 }
 
-.input-change-name{
-    z-index: -10;
-}
+
 
 #input-change-name {
     
