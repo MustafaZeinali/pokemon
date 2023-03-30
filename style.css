@@ -39,6 +39,7 @@ body{
     background-color: rgb(218, 225, 153);
     position: relative;
     min-height: fit-content;
+    display: none;
     
    
   
@@ -74,6 +75,7 @@ body{
 
 .reserve-container{
     background-color: rgb(216, 243, 41);
+    display: none;
 }
 .drop-down-button{
     padding: 0.6rem;
