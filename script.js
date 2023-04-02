@@ -59,39 +59,41 @@ input.search.addEventListener('keydown' , async (event) =>{
     
     
     if (event.key === 'Enter'){ 
-        
-        const response = await fetch(url)
-        const allPokemons = await response.json()
-        
-        
-        
-        //för söka namn av pokemon i sökfälten
-        let inputSearch = document.querySelector('.input-search').value
-        console.log(inputSearch);
-        let allMatchingPokemon = allPokemons.results.filter(pokemon =>pokemon.name.startsWith(inputSearch))
-        
-        console.log(allMatchingPokemon);
+        try { 
+            const response = await fetch(url)
+            const allPokemons = await response.json()
         
         
-        // när det som står i sökfältet matchar ett namn på en pokemon
-        // dvs: antalet sökträffar (pokemons) är större än noll
-        if(allMatchingPokemon.length > 0) {
-            output.viewMenu.innerHTML = "" ;
-            allMatchingPokemon.forEach(async pokemon => {
+        
+            //för söka namn av pokemon i sökfälten
+            let inputSearch = document.querySelector('.input-search').value
+            console.log(inputSearch);
+            let allMatchingPokemon = allPokemons.results.filter(pokemon =>pokemon.name.startsWith(inputSearch))
+        
+            console.log(allMatchingPokemon);
+        
+        
+            // när det som står i sökfältet matchar ett namn på en pokemon
+            // dvs: antalet sökträffar (pokemons) är större än noll
+            if(allMatchingPokemon.length > 0) {
+                output.viewMenu.innerHTML = "" ;
+                allMatchingPokemon.forEach(async pokemon => {
                 await fetchPokemonDetails(pokemon)
                 let card = createPokemonCard(pokemon)            
                 output.viewMenu.append(card)
             })
             
-        } else{
-            console.log('Det finns ingen Pokemon');
-            output.para.innerText = `det finns inget pokemn:`
-            output.viewMenu.append(para)
+            } else{
+                console.log('Det finns ingen Pokemon');
+                output.para.innerText = `det finns inget pokemn:`
+                output.viewMenu.append(para)
             
+        } catch {
+            console.error('Error fetching pokemon data', error);
         }
         
     }
-})
+});
 /*När man lägger till en Pokémon, ska man kunna välja ett namn åt den. Observera att
  man kan lägga till flera Pokémon av samma sort.*/
 let changeName = document.createElement('button')

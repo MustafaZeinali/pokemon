@@ -142,4 +142,11 @@ body{
         top: 6px;
        
     }
+    #menu-btn{
+        background-color:#50cc7f;
+        padding: 0.4rem;
+        border: none;
+        margin: 0 0.4rem 0 0;
+        box-shadow: 1px 1px 7px black;
+    }
 }
