@@ -1,8 +1,8 @@
 body{
     margin: 0;
     padding: 0;
-    
-    background-color: rgb(192, 141, 141);
+    height: 100vh;
+    background:  #fa709a;   
 }
 
 #menu-btn, #myteam-btn{
@@ -14,7 +14,8 @@ body{
     align-items: center;
     justify-content:space-around;
     padding-block: 15px;
-    background-color: aqua;
+    
+    background-color:#ff6366 ;
     position: relative;
     top: -25px;
     
@@ -22,25 +23,29 @@ body{
 }
 .main {
     position: relative;
-    display: flex;
+    margin: 1rem;
     flex-wrap: wrap;
 }
 #view-menu{
-    
+    display: flex;
+    flex-wrap: wrap;
     min-width: 100%;
     position: relative;
-    background-color: rgb(138, 168, 168);
-    
+    background-color: rgba(215, 214, 213, 0.4);
+    backdrop-filter: blur(100vh);
+    box-shadow: 5px 2px 7px black;
     
 }
 #view-myteam{
     
     width: 100%;
-    background-color: rgb(218, 225, 153);
-    position: relative;
+   background-color: rgb(218, 225, 153);
     min-height: fit-content;
     display: none;
-    
+    margin-right: 1rem;
+    background-color: rgba(215, 214, 213, 0.4);
+    backdrop-filter: blur(50px);
+    box-shadow: 5px 2px 7px black;
    
   
     
@@ -49,7 +54,8 @@ body{
 #myteam-btn{
     border: none;
     padding: 0.5em;
-    background-color: tomato;
+    background-color: #50cc7f;
+    box-shadow: 1px 1px 7px black;
 }
 
 
@@ -67,16 +73,73 @@ body{
 
 }
 #menu-btn{
-    background-color: tomato;
+    background-color:#50cc7f;
     padding: 0.4rem;
     border: none;
     margin: 0 0.4rem 0 0;
+    box-shadow: 1px 1px 7px black;
 }
 
 .reserve-container{
     background-color: rgb(216, 243, 41);
     display: none;
+    background-color: rgba(215, 214, 213, 0.4);
+    backdrop-filter: blur(100vh);
+    box-shadow: 5px 2px 7px black;
+    
 }
-.drop-down-button{
-    padding: 0.6rem;
+
+.my-team-container{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.reserve-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem ;
+    display: none;
+}
+
+@media screen and (min-width: 375px){
+    .navbar{
+        position: relative;
+        top: 10px;
+        
+    
+    }
+    #myteam-btn{
+        border: none;
+        padding: 0.5em;
+        width: 2.9rem;
+        font-size: 10px;
+        background-color: #50cc7f;
+        box-shadow: 1px 1px 7px black;
+        position: relative;
+        top: -2px;
+    }
+    #menu-btn{
+        width: 2.9rem;
+        font-size: 12px;
+    
+        position: relative;
+        top:4px ;
+    }
+    #view-menu{
+        display: flex;
+        flex-wrap: wrap;
+        min-width: 100%;
+        position: relative;
+      
+        
+    }
+}
+
+
+@media screen and (min-width: 741px) and (max-width: 1099px ) {
+    .navbar{
+        position: relative;
+        top: 6px;
+       
+    }
 }

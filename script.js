@@ -36,7 +36,7 @@ const button = {
 
 menuBtn.addEventListener("click", () => {
     document.querySelector('.reserve-container').style.display = 'none'
-    document.querySelector('#view-menu').style.display = 'block'
+    document.querySelector('#view-menu').style.display = 'flex'
     document.querySelector('#view-myteam').style.display = 'none'
     document.querySelector('.input-change-name-container').style.display = 'none'
     
@@ -45,10 +45,10 @@ menuBtn.addEventListener("click", () => {
 
 
 myTeam.addEventListener("click" , () =>{
-    document.querySelector('.reserve-container').style.display = 'block'
+    document.querySelector('.reserve-container').style.display = 'flex'
     document.querySelector('#view-menu').style.display = 'none'
-    document.querySelector('#view-myteam').style.display = 'block'
-    document.querySelector('.input-change-name-container').style.display = 'block'
+    document.querySelector('#view-myteam').style.display = 'flex'
+    document.querySelector('.input-change-name-container').style.display = 'flex'
 })
 
 
@@ -153,12 +153,11 @@ function createPokemonCard(pokemon, isOnTeam) {
         card.appendChild(deleteButton)
         
    
-
+        //att byta namn på pokemon 
        titleElement.addEventListener('click' , () =>{
             const inputChangeName = document.createElement('input');
             inputChangeName.className = 'input-change-name';
             inputChangeName.value = titleElement.innerText;
-            console.log('test');
             inputChangeName.addEventListener('keydown' , event => {
                 if(event.key == 'Enter'){
                     console.log(inputChangeName.value);
@@ -173,30 +172,7 @@ function createPokemonCard(pokemon, isOnTeam) {
             inputChangeName.focus();
        })
 
-        /*let changeNameButton = document.createElement('button')
-        changeNameButton.classList.add('change-btn')
-        changeNameButton.innerText = 'change name' ;
-        card.append(changeNameButton);
-        changeNameButton.addEventListener('click' , () =>{
-            titleElement.remove()
-            //nameInput.style.display = 'block'
-        })
-        //let nameInput = document.createElement('input').value ;
-         
-        //nameInput.classList.add('name-input') ;
-
-       /* input.inputChangeName.addEventListener('keydown' , (event) => {
         
-
-            if(event.key === 'Enter'){
-                Paragraph.innerText = input.inputChangeName ;
-            }
-            
-           // Paragraph.innerText = input.inputChangeName;
-        })
-        //nameInput.innerText = nameOfPokemon ;
-        card.append(input.inputChangeName)
-        card.appendChild(Paragraph)*/
       
     } else {
         addButton.innerText = 'Add me' ;
@@ -208,21 +184,21 @@ function createPokemonCard(pokemon, isOnTeam) {
 
     card.classList.add('card')
     let nameOfPokemon = pokemon.name;
-    // byt namn på pokemon 
+
    
-    //console.log('createPokemonCard: pokemon object is ', pokemon, nameOfPokemon );
-    // output.para.innerText = `name: ${nameOfPokemon}`
-    titleElement.innerText = `name :  ${nameOfPokemon}` ;
+    
+    titleElement.innerText = `name:  ${nameOfPokemon}` ;
     card.appendChild(titleElement)
 
    
 
     const imageOfPokemon = document.createElement('img')
     imageOfPokemon.classList.add('picture')
-    //  imageOfPokemon.src = `https:raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${allMatchingPokemon}.png`
+    
     console.log('Pokemon image:', pokemon.sprite)
     imageOfPokemon.src = pokemon.sprite
     card.append(imageOfPokemon)
+
 
     return card // DOM-element
 }
@@ -232,16 +208,18 @@ function createPokemonCard(pokemon, isOnTeam) {
 
 
 async function fetchPokemonDetails(pokemon) {
-    //console.log('fetchPokemonDetails', pokemon)
+    console.log('fetchPokemonDetails', pokemon)
     const response = await fetch(pokemon.url)
     const pokemonBasicInfo = await response.json()
-   // console.log('pokemonBasic', pokemonBasicInfo);
+   
 
     const sprites = pokemonBasicInfo.sprites.front_default
+    //const abilities = pokemonBasicInfoAbility.height
     //console.log('TEST' ,sprites);
 
 
     pokemon.sprite = sprites
+    //pokemon.ability = abilities
 
     // använd fetch för att skicka request
     // url är: pokemon.url
@@ -249,5 +227,6 @@ async function fetchPokemonDetails(pokemon) {
     // skriv ut sprites med console.log för att se hur den ser ut
     // leta upp rätt bild och lägg den i objektet: pokemon.sprite = ???
 }
+
 
 

@@ -5,10 +5,12 @@
    
      border: 2px solid rgb(26, 26, 167);
      width: 9rem;
-     background-color: rgb(85, 110, 223);
+     background-color: #00BFFF;
      height: 11rem;
      left: 1rem;
      margin: 2rem;
+     box-shadow: 3px 3px 7px black;
+     border-radius: 2px;
 }
 .input-change-name{
     position: absolute;
@@ -22,11 +24,11 @@
      bottom: 85px;
      left: 1rem;
      border: 2px solid;
-     border-radius: ;
-     background-color: #fff;
+     border-radius:2px ;
+     background-color: #0bf3f7;
      height:5rem;
      width: 7rem;
-  
+    
    
 
     
@@ -46,25 +48,15 @@
     border: none;
     padding: 0.4rem;
     width: 4.5rem;
-    background-color: tomato;
+    background-color: #50cc7f;
     position: relative;
     top: 140px;
-    left: 34px;
+    left: 36px;
     color: #fff;
+    box-shadow: 1px 1px 2px black;
     
 }
-.change-btn{
-    border: none;
-    padding: 0.4rem 1.9rem 0.4rem 1.9rem;
-    background-color: tomato;
-    position: relative;
-    top: 149px;
-    left: px;
-   
-    color: #fff;
-   
-    
-}
+
 
 .pico{
     width: 15%;
@@ -83,15 +75,95 @@
     top: -15px;
 }
 h4 {
-    color: aliceblue;
+    color: rgb(2, 19, 33);
     position: absolute;
-    top: 110px;
+    top: 85px;
     left: 5px;
-    margin:0;
-}
-
-
-
-#input-change-name {
     
 }
+
+
+@media screen and (min-width: 375px) {
+    
+.pico{
+    width: 10rem;
+   
+    
+ 
+}
+h4{
+    position: absolute;
+    top: 78px;
+}
+.Pico-div{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: -5px;
+}
+.card{
+   
+     width: 6rem;
+   
+}
+.picture{
+    height: 5rem;
+    width: 4.5rem;
+    position: absolute;
+    left: 10px;
+}
+.add-btn , .delete-btn {
+    width: 3.7rem;
+    position: absolute;
+    padding: 10;
+    left: 18px;
+    
+}
+.delete-btn{
+    font-size: 12px;
+}
+}
+
+@media screen and (min-width: 740px) {
+    .card{
+   
+        width: 9rem;
+        height: 11rem;
+      
+   }
+   .picture{
+    height: 5rem;
+    width: 7rem;
+    position: absolute;
+    left: 15px;
+    top: 10px;
+}
+.h4{
+    position: absolute;
+    top: 75px;
+    left: 5px;
+    
+}
+.pico{
+    width: 15%;
+}
+.add-btn , .delete-btn {
+
+    padding: 0.4rem;
+    width: 4.5rem;
+    
+    position: relative;
+    top: 140px;
+    left: 36px;
+  
+    
+}
+
+}
+@media screen and (min-width: 741px) and (max-width: 1099px) {
+    .pico {
+        width: 19%;
+        z-index: 10;
+    }
+}
+
