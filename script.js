@@ -87,8 +87,9 @@ input.search.addEventListener('keydown' , async (event) =>{
                 console.log('Det finns ingen Pokemon');
                 output.para.innerText = `det finns inget pokemn:`
                 output.viewMenu.append(para)
+            }   
             
-        } catch {
+        } catch(error) {
             console.error('Error fetching pokemon data', error);
         }
         
