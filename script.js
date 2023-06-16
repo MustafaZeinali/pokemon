@@ -107,14 +107,24 @@ function addToTeam(pokemon) {
     
     if(teamList.length < 3 ){
         teamList.push(pokemon)
-        
+        if (teamList.length < 3){
+            output.para.innerText = 'teamet är fullt för my team!';
+        }
+       
     } else {
         reserveList.push(pokemon)
-        
+       
     }
+    /*if (teamList.length === 3){
+        viewMyteam.para.innerText = ' teamet ät fullt!';
+    }else{
+        output.para.innerText = ' ' ;
+    }*/
+   
 
     renderTeam()
 }
+
 function renderTeam() {
     
     console.log(teamList , reserveList);

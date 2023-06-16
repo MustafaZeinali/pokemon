@@ -17,6 +17,7 @@
     top: 110px;
     left: 5px;
     width: 8rem;
+   
 
 }
 .picture{
@@ -34,13 +35,7 @@
     
 }
 
-#para{
-    
-    position: relative;
-    top: 70px;
-    left: 10px;
-     
-}
+
  
 
 
@@ -79,11 +74,11 @@ h4 {
     position: absolute;
     top: 85px;
     left: 5px;
-    
+    cursor: pointer;
 }
 
 
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 375px) and (max-width: 739px) {
     
 .pico{
     width: 10rem;
@@ -106,6 +101,13 @@ h4{
      width: 6rem;
    
 }
+#para{
+    
+    position: absolute;
+    bottom: 59rem;
+    left: 3rem;
+    
+}
 .picture{
     height: 5rem;
     width: 4.5rem;
@@ -124,7 +126,7 @@ h4{
 }
 }
 
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 523px) and (max-width:739px) {
     .card{
    
         width: 9rem;
@@ -157,13 +159,25 @@ h4{
     left: 36px;
   
     
-}
+
 
 }
-@media screen and (min-width: 741px) and (max-width: 1099px) {
+#para{
+    position: absolute;
+    bottom: 59rem;
+    left: 3rem;
+}
+}
+@media screen and (min-width: 741px)  {
     .pico {
         width: 19%;
         z-index: 10;
     }
+    #para{
+        position: absolute;
+        bottom: 29rem;
+        left: 3rem;
+    }
+    
 }
 
